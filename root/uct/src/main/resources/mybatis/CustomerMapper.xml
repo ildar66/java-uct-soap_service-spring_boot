@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ru.masterdm.uct.repository.CustomerDao">
+
+    <resultMap id="customerResultMap" type="ru.masterdm.uct.entity.Customer" autoMapping="true">
+        <id property="custId" column="custid" />
+        <collection property="branches" columnPrefix="br_" resultMap="branchResultMap"/>
+    </resultMap>
+
+    <resultMap id="branchResultMap" type="ru.masterdm.uct.entity.Branch" autoMapping="true">
+        <id property="branchId" column="branch_id"/>
+    </resultMap>
+
+    <select id="selectCustomers" resultMap="customerResultMap">
+        select custid, custid client, customerType, fiscalReasonCode, inn, intaddress, intplace,
+               intstate, intzip, lawaddress, lawcountry, lawplace, lawplacetype, lawstate,
+               lawzip, namefull, nameint, nameshort, okatocode, okpocode, propertytype,
+               lawdistrict, lawcity, lawstreet, lawbuilding, lawblock, lawoffice,
+               br.branchid br_branch_id, br.branchbic br_branch_bic, br.branchname br_branchname,
+               br.branchnamefull br_branchnamefull
+          from ekk_client, (select *
+                              from (select * from ekk_branch order by branchid)
+                             where rownum = 1) br
+         where ekk_client.ln = #{notesAddress}
+    </select>
+
+    <select id="selectCustomer" resultMap="customerResultMap">
+        select custid, (select 1 from dual), customertype, fiscalreasoncode, inn, intaddress, intplace,
+            intstate, intzip, lawaddress, lawcountry, lawplace, lawplacetype, lawstate,
+            lawzip, namefull, nameint, nameshort, okatocode, okpocode, propertytype,
+            lawdistrict, lawcity, lawstreet, lawbuilding, lawblock, lawoffice
+        from ekk_client
+        where custid = #{custId}
+    </select>
+
+
+    <select id="selectBranch" resultMap="branchResultMap">
+        select *
+          from (select * from ekk_branch order by branchid )
+         where rownum = 1
+    </select>
+
+</mapper>

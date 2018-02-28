@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WSGetDocStatus" xmlns:ns1="urn:WSGetDocStatusIntf" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<message name="GetDocStatusRequest">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="CustID" type="xs:int"/>
+<part name="DocInfo" type="xs:string"/>
+<part name="DocScheme" type="xs:string"/>
+<part name="DocStatus" type="xs:string"/>
+<part name="RecordID" type="xs:string"/>
+<part name="RemoteUser" type="xs:string"/>
+</message>
+<message name="GetDocStatusResponse">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="DocInfo" type="xs:string"/>
+<part name="DocStatus" type="xs:string"/>
+</message>
+<portType name="WSGetDocStatus">
+<operation name="GetDocStatus">
+<input message="tns:GetDocStatusRequest"/>
+<output message="tns:GetDocStatusResponse"/>
+</operation>
+</portType>
+<binding name="WSGetDocStatusbinding" type="tns:WSGetDocStatus">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+<operation name="GetDocStatus">
+<soap:operation style="rpc" soapAction="urn:WSGetDocStatusIntf-WSGetDocStatus#GetDocStatus"/>
+<input message="tns:GetDocStatusRequest">
+<soap:body namespace="urn:WSGetDocStatusIntf-WSGetDocStatus" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</input>
+<output message="tns:GetDocStatusResponse">
+<soap:body namespace="urn:WSGetDocStatusIntf-WSGetDocStatus" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</output>
+</operation>
+</binding>
+<service name="WSGetDocStatusservice">
+<port name="WSGetDocStatusPort" binding="tns:WSGetDocStatusbinding">
+<soap:address location="http://localhost/soap/WSGetDocStatus"/>
+</port>
+</service>
+</definitions>

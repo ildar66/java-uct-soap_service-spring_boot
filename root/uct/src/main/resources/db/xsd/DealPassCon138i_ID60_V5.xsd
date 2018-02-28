@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="BSDocument">
+		<xs:annotation>
+			<xs:documentation>
+				Паспорт сделки по контракту (138-И) (ID 60).
+				Версия_5.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DOCUMENTDATE" type="BS_Date">
+					<xs:annotation>
+						<xs:documentation>Дата документа</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DOCUMENTNUMBER">
+					<xs:annotation>
+						<xs:documentation>Номер документа</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_String">
+							<xs:maxLength value="15" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTID" type="BS_Integer">
+					<xs:annotation>
+						<xs:documentation>ID организации</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="SENDEROFFICIALS" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Ответственный исполнитель</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="40" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="KBOPID">
+					<xs:annotation>
+						<xs:documentation>ID подразделения</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_Integer" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERBANKNAME">
+					<xs:annotation>
+						<xs:documentation>Наименование уполномоченного банка
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_String">
+							<xs:maxLength value="255" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERBANKBIC">
+					<xs:annotation>
+						<xs:documentation>БИК банка Клиента
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_String">
+							<xs:maxLength value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERPROPERTYTYPE" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Форма собственности организации-резидента
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="10" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERNAME">
+					<xs:annotation>
+						<xs:documentation>Название организации-резидента
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_String">
+							<xs:maxLength value="255" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMEROGRN" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>ОГРН организации-резидента</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="30" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERINN" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>ИНН организации-резидента</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="12" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERKPP" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>КПП организации-резидента</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERTYPE" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Тип организации-резидента: резидент – 0,
+							нерезидент – 1
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSInteger">
+							<xs:pattern value="" />
+							<xs:pattern value="0" />
+							<xs:pattern value="1" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="LAWSTATE" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Субъект РФ</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="40" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="LAWDISTRICT" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Район</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="255" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="LAWCITY" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Город</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="100" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="LAWPLACETYPE" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Тип населенного пункта</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="5" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="LAWPLACE" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Населенный пункт</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="35" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="LAWSTREET" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Улица</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="100" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="LAWBUILDING" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Номер дома</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="50" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="LAWBLOCK" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Корпус/строение</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="20" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="LAWOFFICE" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Офис/квартира</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="20" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="PHONEOFFICIALS" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Телефон ответственного исполнителя
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="20" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DPDATE" type="BSDate" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Дата ПС</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DPNUM1" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Первая часть номера ПС</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="8" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DPNUM2" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Вторая часть номера ПС</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="4" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DPNUM3" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Третья часть номера ПС</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="4" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DPNUM4">
+					<xs:annotation>
+						<xs:documentation>Четвертая часть номера ПС</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_String">
+							<xs:maxLength value="1" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DPNUM5" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Пятая часть номера ПС</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="1" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CONNUMBER" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Номер контракта/кредитного договора
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="50" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ISCONNUMBER">
+					<xs:annotation>
+						<xs:documentation>Признак номера контракта/кредитного договора (с
+							номером – 0 /
+							без номера – 1)
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_Integer">
+							<xs:pattern value="0" />
+							<xs:pattern value="1" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CONDATE" type="BSDate" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Дата контракта (кредитного договора)
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="CONCURRCODE">
+					<xs:annotation>
+						<xs:documentation>Код валюты цены контракта/кредитного договора
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_String">
+							<xs:maxLength value="3" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CONCURRNAME" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Наименование валюты цены контракта/кредитного
+							договора
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="100" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CONAMOUNT" type="BSMoney" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Сумма контракта/кредитного договора
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ISCONAMOUNT">
+					<xs:annotation>
+						<xs:documentation>Признак суммы контракта/кредитного договора (с
+							суммой – 0 / без суммы – 1)
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_Integer">
+							<xs:pattern value="0" />
+							<xs:pattern value="1" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CONENDDATE" type="BSDate" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Дата завершения исполнения обязательств
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DPNUMBEROTHERBANK" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Номер ПС, ранее оформленного в другом
+							уполномоченном банке
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="25" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="BANKVKFULLNAME" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Наименование банка ПС</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="255" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="NONRESIDENTINFO" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>БЛОБ таблица: Реквизиты нерезидента
+							(нерезидентов)
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Record" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="NAME">
+											<xs:annotation>
+												<xs:documentation>Наименование нерезидента
+												</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="BS_String">
+													<xs:maxLength value="255" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<!-- <xs:choice> -->
+										<xs:element name="COUNTRY">
+											<xs:annotation>
+												<xs:documentation>Наименование страны нерезидента
+												</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="BS_String">
+													<xs:maxLength value="50" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="COUNTRYCODE">
+											<xs:annotation>
+												<xs:documentation>Код страны нерезидента
+												</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="BS_String">
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<!-- </xs:choice> -->
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DOCATTACHMENT" type="xs:string"
+					minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Вложения файлов</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="SENDDATEBEFOREISSUECLIENT" type="BSDate"
+					minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Дата представления документов для оформления ПС
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="SENDTYPEBEFOREISSUECLIENT" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+							Способ представления документов для оформления
+							ПС
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="2" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DATEOGRN" type="BSDate" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Дата государственной регистрации
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BS_Date">
+		<xs:annotation>
+			<xs:documentation>Дата. DD.MM.YYYY</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+			<xs:pattern
+				value="(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.((19)|(20)\d{2})" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BS_Integer">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="0" />
+			<xs:minInclusive value="0" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BS_String">
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+			<xs:minLength value="1" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BSString">
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BS_STRING">
+		<xs:annotation>
+			<xs:documentation>Пустая строка</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="0" />
+			<xs:whiteSpace value="collapse" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BSInteger">
+		<xs:annotation>
+			<xs:documentation>INTEGER | ""</xs:documentation>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:list itemType="BS_Integer" />
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:list itemType="BS_STRING" />
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<xs:simpleType name="BSDate">
+		<xs:annotation>
+			<xs:documentation>DD.MM.YYYY | ""</xs:documentation>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:list itemType="BS_Date" />
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:list itemType="BS_STRING" />
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<xs:simpleType name="BS_Money">
+		<xs:restriction base="xs:double">
+			<xs:minInclusive value="0" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BSMoney">
+		<xs:annotation>
+			<xs:documentation>MONEY | ""</xs:documentation>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:list itemType="BS_Money" />
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:list itemType="BS_STRING" />
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+</xs:schema>

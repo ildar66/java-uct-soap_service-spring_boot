@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WSGetCustomer" xmlns:ns1="urn:WSGetCustomerIntf" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="GetAccountsListRequest">
+        <part name="Account" type="xs:string"/>
+        <part name="Accounts" type="xs:string"/>
+        <part name="BIC" type="xs:string"/>
+        <part name="BSError" type="xs:string"/>
+        <part name="BSErrorCode" type="xs:string"/>
+        <part name="CustID" type="xs:int"/>
+        <part name="RemoteUser" type="xs:string"/>
+    </message>
+    <message name="GetAccountsListResponse">
+        <part name="Accounts" type="xs:string"/>
+        <part name="BSError" type="xs:string"/>
+        <part name="BSErrorCode" type="xs:string"/>
+    </message>
+    <message name="GetCustsAndBranchesRequest">
+        <part name="CustsAndBranches" type="xs:string"/>
+        <part name="BSErrorCode" type="xs:string"/>
+        <part name="BSError" type="xs:string"/>
+        <part name="RemoteUser" type="xs:string"/>
+    </message>
+    <message name="GetCustsAndBranchesResponse">
+        <part name="BSError" type="xs:string"/>
+        <part name="BSErrorCode" type="xs:string"/>
+        <part name="CustsAndBranches" type="xs:string"/>
+    </message>
+    <portType name="WSGetCustomer">
+        <operation name="GetAccountsList">
+            <input message="tns:GetAccountsListRequest"/>
+            <output message="tns:GetAccountsListResponse"/>
+        </operation>
+        <operation name="GetCustsAndBranches">
+            <input message="tns:GetCustsAndBranchesRequest"/>
+            <output message="tns:GetCustsAndBranchesResponse"/>
+        </operation>
+    </portType>
+    <binding name="WSGetCustomerbinding" type="tns:WSGetCustomer">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+        <operation name="GetAccountsList">
+            <soap:operation style="rpc" soapAction="urn:WSGetCustomerIntf-WSGetCustomer#GetAccountsList"/>
+            <input message="tns:GetAccountsListRequest">
+                <soap:body namespace="urn:WSGetCustomerIntf-WSGetCustomer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+            </input>
+            <output message="tns:GetAccountsListResponse">
+                <soap:body namespace="urn:WSGetCustomerIntf-WSGetCustomer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+            </output>
+        </operation>
+        <operation name="GetCustsAndBranches">
+            <soap:operation style="rpc" soapAction="urn:WSGetCustomerIntf-WSGetCustomer#GetCustsAndBranches"/>
+            <input message="tns:GetCustsAndBranchesRequest">
+                <soap:body namespace="urn:WSGetCustomerIntf-WSGetCustomer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+            </input>
+            <output message="tns:GetCustsAndBranchesResponse">
+                <soap:body namespace="urn:WSGetCustomerIntf-WSGetCustomer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="WSGetCustomerservice">
+        <port name="WSGetCustomerPort" binding="tns:WSGetCustomerbinding">
+            <soap:address location="http://localhost/soap/WSGetCustomer"/>
+        </port>
+    </service>
+</definitions>

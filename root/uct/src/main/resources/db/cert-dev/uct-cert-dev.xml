@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="uct-cert-dev" author="svaliev" logicalFilePath="uct-cert-dev" context="dev">
+        <insert tableName="ekk_cert">
+            <column name="serialnumber" value="5D6BB4004DA87B8947BADD5E88C02E4A" />
+            <column name="subject" value="CN=EKK-Client 1,C=RU" />
+            <column name="issuer" value="CN=Тестовый подчиненный УЦ ООО &quot;КРИПТО-ПРО&quot; ГОСТ 2012 (УЦ 2.0),O=ООО &quot;КРИПТО-ПРО&quot;,STREET=ул. Сущёвский вал д. 18,L=Москва,S=77 Москва,C=RU,1.2.643.3.131.1.1=007717107991,1.2.643.100.1=1037700085444,E=info@cryptopro.ru" />
+            <column name="subject_altname" value="EKK-Client 1" />
+            <column name="notes_address" value="CN=Первый клиент для тестов/O=Veb" />
+            <column name="time_notbefore" valueDate="2017-12-18" />
+            <column name="time_notafter" valueDate="2018-03-18" />
+            <column name="time_notbefore_private" valueDate="2017-12-18" />
+            <column name="time_notafter_private" valueDate="2018-03-18" />
+            <column name="certificate" valueClobFile="client.cer" />
+            <column name="unid" value="00000000000000000000000000000001" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WSImportSignedDocument" xmlns:ns1="urn:WSImportSignedDocumentIntf" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/">
+-<message name="ImportSignedDocumentRequest">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="CustID" type="xs:int"/>
+<part name="DocData" type="xs:string"/>
+<part name="DocScheme" type="xs:string"/>
+<part name="DocVersion" type="xs:int"/>
+<part name="RecordID" type="xs:string"/>
+<part name="RemoteUser" type="xs:string"/>
+<part name="SignData" type="xs:string"/>
+</message>
+<message name="ImportSignedDocumentResponse">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="RecordID" type="xs:string"/>
+</message>
+<portType name="WSImportSignedDocument">
+<operation name="ImportSignedDocument">
+<input message="tns:ImportSignedDocumentRequest"/>
+<output message="tns:ImportSignedDocumentResponse"/>
+</operation>
+</portType>
+<binding name="WSImportSignedDocumentbinding" type="tns:WSImportSignedDocument">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+<operation name="ImportSignedDocument">
+<soap:operation style="rpc" soapAction="urn:WSImportSignedDocumentIntf-WSImportSignedDocument#ImportSignedDocument"/>
+<input message="tns:ImportSignedDocumentRequest">
+<soap:body namespace="urn:WSImportSignedDocumentIntf-WSImportSignedDocument" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</input>
+<output message="tns:ImportSignedDocumentResponse">
+<soap:body namespace="urn:WSImportSignedDocumentIntf-WSImportSignedDocument" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</output>
+</operation>
+</binding>
+<service name="WSImportSignedDocumentservice">
+<port name="WSImportSignedDocumentPort" binding="tns:WSImportSignedDocumentbinding">
+<soap:address location="http://localhost/soap/WSImportSignedDocument"/>
+</port>
+</service>
+</definitions>

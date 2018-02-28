@@ -1,0 +1,129 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+buildscript {
+	ext {
+		springBootVersion = '1.5.7.RELEASE'
+		camelVersion = '2.19.3'
+		axisVersion = '1.4'
+		wsdl4jVersion = '1.5.1'
+		discoveryVersion = '0.5'
+		jaxrpcVersion = '1.1'
+		mybatisVersion = '1.3.1'
+		liquibaseVersion = '3.5.3'
+		liquibaseSlf4jVersion = '2.0.0'
+		liquibasePluginVersion = '1.2.4'
+		checkstyleVersion = '8.4'
+        ojdbcVersion = '12.2.0.1'
+		commonsIoVersion = '2.6'
+	}
+	repositories {
+		mavenCentral()
+		flatDir {
+			dirs 'lib'
+		}
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+		classpath "org.liquibase:liquibase-core:$liquibaseVersion"
+		classpath "org.liquibase:liquibase-gradle-plugin:$liquibasePluginVersion"
+		classpath "com.oracle:ojdbc8:$ojdbcVersion"
+	}
+}
+
+apply plugin: "java"
+apply plugin: "org.springframework.boot"
+apply plugin: "org.liquibase.gradle"
+apply plugin: "checkstyle"
+apply plugin: "application"
+
+group = 'ru.masterdm.uct'
+version = '1.0.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+defaultTasks 'clean', 'update', 'bootRun'
+
+dependencies {
+	compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+	compile "org.springframework.boot:spring-boot-starter-tomcat:$springBootVersion"
+	compile "org.springframework.boot:spring-boot-starter-security:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter-logging:$springBootVersion"
+
+	compile "org.apache.axis:axis:$axisVersion"
+	compile "org.apache.axis:axis-jaxrpc:$axisVersion"
+	compile "org.apache.axis:axis-saaj:$axisVersion"
+	compile "axis:axis-wsdl4j:$wsdl4jVersion"
+	compile "wsdl4j:wsdl4j:$wsdl4jVersion"
+	compile "commons-discovery:commons-discovery:$discoveryVersion"
+	compile "javax.xml:jaxrpc-api:$jaxrpcVersion"
+
+	compile "org.apache.camel:camel-spring-boot-starter:$camelVersion"
+    compile "org.apache.camel:camel-mybatis-starter:$camelVersion"
+    compile "org.apache.camel:camel-jaxb-starter:$camelVersion"
+
+	compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisVersion"
+
+	compile "org.liquibase:liquibase-core:$liquibaseVersion"
+	compile "com.mattbertolini:liquibase-slf4j:$liquibaseSlf4jVersion"
+
+	compile "com.oracle:ojdbc8:$ojdbcVersion"
+	compile "commons-io:commons-io:$commonsIoVersion"
+}
+
+def dbUrl = project.hasProperty('spring.datasource.url') ? dbUrl : System.properties.getProperty('spring.datasource.url')
+def dbUsername = project.hasProperty('dbUsername') ? dbUsername : System.properties.getProperty('spring.datasource.username')
+def dbPassword = project.hasProperty('dbPassword') ? dbPassword : System.properties.getProperty('spring.datasource.password')
+def liquibaseContext = System.properties.getProperty('spring.profiles.active')
+
+liquibase {
+	activities {
+		main {
+			changeLogFile "${sourceSets.main.resources.srcDirs[0]}/db/uct-changelog.xml"
+			url "$dbUrl"
+			username "$dbUsername"
+			password "$dbPassword"
+            contexts "$liquibaseContext"
+		}
+	}
+}
+
+checkstyle {
+	toolVersion = checkstyleVersion
+	configFile = file("${project.rootDir}/md_checkstyle.xml")
+}
+
+// Axis auto-generated classes
+checkstyleMain.exclude "**/ru/masterdm/uct/axis/ws/*"
+// CryptoPro classes
+checkstyleMain.exclude "**/ru/CryptoPro/**"
+
+task toolVersions {
+	println org.gradle.internal.jvm.Jvm.current()
+	println GradleVersion.current().toString()
+}
+
+task downloadCheckstyleConfig() {
+	def f = file("${project.rootDir}/md_checkstyle.xml")
+	new URL("http://files.masterdm.ru/md_checkstyle.xml").withInputStream{ i -> f.withOutputStream{ it << i }}
+}
+
+checkstyleMain.dependsOn downloadCheckstyleConfig
+
+bootRun {
+	systemProperties = System.properties
+}
+
+processResources {
+    filesMatching('**/logback*.xml') {
+        filter ReplaceTokens, tokens: [
+                "projectVersion"        : project.version.toString(),
+                "projectName"           : rootProject.name
+        ]
+    }
+}
+
+/*
+project.gradle.projectsEvaluated {
+    applicationDefaultJvmArgs = ["-Dspring.profiles.active=${project.gradle.startParameter.systemPropertiesArgs['spring.profiles.active']}"]
+}
+*/

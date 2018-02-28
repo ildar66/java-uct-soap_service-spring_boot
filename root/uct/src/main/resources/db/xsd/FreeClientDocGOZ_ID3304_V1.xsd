@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="BSDocument">
+		<xs:annotation>
+			<xs:documentation>
+				Письмо в Банк (гособоронзаказ) (ID 3304). Версия 1.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DOCUMENTDATE" type="BS_Date">
+					<xs:annotation>
+						<xs:documentation>Дата документа</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DOCUMENTNUMBER">
+					<xs:annotation>
+						<xs:documentation>Номер документа</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_String">
+							<xs:maxLength value="15" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTID" type="BS_Integer">
+					<xs:annotation>
+						<xs:documentation>ID организации</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="SENDEROFFICIALS" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Ответственный исполнитель</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="40" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DOCTYPE" type="BSInteger" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Тип документа</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DOCATTACHMENT" type="BSString"
+					minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Вложения файлов
+							(формируется по правилу,
+							приведенному в п. Поля с
+							вложениями файлов)
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DOCNAME">
+					<xs:annotation>
+						<xs:documentation>Название документа</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_String">
+							<xs:maxLength value="255" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DOCTEXT" type="BSString" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Текст документа</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="RECIPIENT" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Лицо, которому предназначен документ
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="80" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="KBOPID">
+					<xs:annotation>
+						<xs:documentation>ID подразделения</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_Integer" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ACCOUNT" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Номер счета</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="25" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="PAYNUMBER" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Номер связанного платёжного поручения
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="15" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="PAYDATE" type="BSDate" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Дата связанного платёжного поручения
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PAYDOCDATECREATE" type="BSDate"
+					minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Дата и время создания платежного поручения
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PAYDOCTIMECREATE" type="BSDate"
+					minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Время создания платежного поручения
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DOCUMENTNUMBERGOZ">
+					<xs:annotation>
+						<xs:documentation>Номер подтверждающего документа
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_String">
+							<xs:maxLength value="15" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DOCUMENTDATEGOZ" type="BS_Date">
+					<xs:annotation>
+						<xs:documentation>Дата подтверждающего документа
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DOCTYPEGOZ">
+					<xs:annotation>
+						<xs:documentation>Тип подтверждающего документа:
+							13263 -
+							Подтверждающий документ ГОЗ.
+							13328 - Контракт (договор,
+							соглашение) между головным исполнителем и
+							исполнителем, между
+							исполнителями, а также дополнения к контрактам,
+							выписки из
+							контрактов.
+							13327 - Заявление на размещение средств в депозит.
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_Integer">
+							<xs:pattern value="13263" />
+							<xs:pattern value="13328" />
+							<xs:pattern value="13327" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BS_Date">
+		<xs:annotation>
+			<xs:documentation>Дата. DD.MM.YYYY</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+			<xs:pattern
+				value="(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.((19)|(20)\d{2})" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BS_Integer">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="0" />
+			<xs:minInclusive value="0" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BS_String">
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+			<xs:minLength value="1" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BSString">
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BS_STRING">
+		<xs:annotation>
+			<xs:documentation>Пустая строка</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="0" />
+			<xs:whiteSpace value="collapse" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BSInteger">
+		<xs:annotation>
+			<xs:documentation>INTEGER | ""</xs:documentation>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:list itemType="BS_Integer" />
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:list itemType="BS_STRING" />
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<xs:simpleType name="BSDate">
+		<xs:annotation>
+			<xs:documentation>DD.MM.YYYY | ""</xs:documentation>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:list itemType="BS_Date" />
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:list itemType="BS_STRING" />
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+
+</xs:schema>

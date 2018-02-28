@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WSImportDocument" xmlns:ns1="urn:WSImportDocumentIntf" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<message name="ImportDocumentRequest">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="CustID" type="xs:int"/>
+<part name="DocData" type="xs:string"/>
+<part name="DocScheme" type="xs:string"/>
+<part name="DocVersion" type="xs:int"/>
+<part name="RecordID" type="xs:string"/>
+<part name="RemoteUser" type="xs:string"/>
+</message>
+<message name="ImportDocumentResponse">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="RecordID" type="xs:string"/>
+</message>
+<portType name="WSImportDocument">
+<operation name="ImportDocument">
+<input message="tns:ImportDocumentRequest"/>
+<output message="tns:ImportDocumentResponse"/>
+</operation>
+</portType>
+<binding name="WSImportDocumentbinding" type="tns:WSImportDocument">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+<operation name="ImportDocument">
+<soap:operation style="rpc" soapAction="urn:WSImportDocumentIntf-WSImportDocument#ImportDocument"/>
+<input message="tns:ImportDocumentRequest">
+<soap:body namespace="urn:WSImportDocumentIntf-WSImportDocument" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</input>
+<output message="tns:ImportDocumentResponse">
+<soap:body namespace="urn:WSImportDocumentIntf-WSImportDocument" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</output>
+</operation>
+</binding>
+<service name="WSImportDocumentservice">
+<port name="WSImportDocumentPort" binding="tns:WSImportDocumentbinding">
+<soap:address location="http://localhost/soap/WSImportDocument"/>
+</port>
+</service>
+</definitions>

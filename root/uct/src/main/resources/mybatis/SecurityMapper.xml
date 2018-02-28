@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ru.masterdm.uct.repository.SecurityDao">
+    <resultMap id="certResultMap" type="ru.masterdm.uct.entity.Certificate" autoMapping="true">
+        <id property="serialNumber" column="serialnumber"/>
+    </resultMap>
+
+    <select id="selectCertificate" resultMap="certResultMap">
+        select serialnumber, subject, issuer, subject_altname, notes_address
+          from ekk_cert
+         where subject_altname = #{remoteUser, jdbcType=VARCHAR}
+    </select>
+</mapper>

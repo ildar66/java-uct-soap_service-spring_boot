@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WSPrepareDocForCancel" xmlns:ns1="urn:WSPrepareDocForCancelIntf" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<message name="PrepareDocForCancelRequest">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="CancelFields" type="xs:string"/>
+<part name="CustID" type="xs:int"/>
+<part name="DocScheme" type="xs:string"/>
+<part name="RecordID" type="xs:string"/>
+<part name="RemoteUser" type="xs:string"/>
+</message>
+<message name="PrepareDocForCancelResponse">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="CancelFields" type="xs:string"/>
+</message>
+<portType name="WSPrepareDocForCancel">
+<operation name="PrepareDocForCancel">
+<input message="tns:PrepareDocForCancelRequest"/>
+<output message="tns:PrepareDocForCancelResponse"/>
+</operation>
+</portType>
+<binding name="WSPrepareDocForCancelbinding" type="tns:WSPrepareDocForCancel">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+<operation name="PrepareDocForCancel">
+<soap:operation style="rpc" soapAction="urn:WSPrepareDocForCancelIntf-WSPrepareDocForCancel#PrepareDocForCancel"/>
+<input message="tns:PrepareDocForCancelRequest">
+<soap:body namespace="urn:WSPrepareDocForCancelIntf-WSPrepareDocForCancel" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</input>
+<output message="tns:PrepareDocForCancelResponse">
+<soap:body namespace="urn:WSPrepareDocForCancelIntf-WSPrepareDocForCancel" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</output>
+</operation>
+</binding>
+<service name="WSPrepareDocForCancelservice">
+<port name="WSPrepareDocForCancelPort" binding="tns:WSPrepareDocForCancelbinding">
+<soap:address location="http://localhost/soap/WSPrepareDocForCancel"/>
+</port>
+</service>
+</definitions>

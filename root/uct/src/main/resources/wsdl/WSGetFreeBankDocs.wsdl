@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WSGetFreeBankDocs" xmlns:ns1="urn:WSGetFreeBankDocsIntf" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<message name="GetFreeBankDocRequest">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="CustID" type="xs:int"/>
+<part name="Document" type="xs:string"/>
+<part name="RecordID" type="xs:string"/>
+<part name="RemoteUser" type="xs:string"/>
+<part name="SignData" type="xs:string"/>
+</message>
+<message name="GetFreeBankDocResponse">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="Document" type="xs:string"/>
+<part name="SignData" type="xs:string"/>
+</message>
+<message name="GetFreeBankDocListRequest">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="CustID" type="xs:int"/>
+<part name="DocList" type="xs:string"/>
+<part name="DocumentDate" type="xs:date"/>
+<part name="RemoteUser" type="xs:string"/>
+</message>
+<message name="GetFreeBankDocListResponse">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="DocList" type="xs:string"/>
+</message>
+<portType name="WSGetFreeBankDocs">
+<operation name="GetFreeBankDoc">
+<input message="tns:GetFreeBankDocRequest"/>
+<output message="tns:GetFreeBankDocResponse"/>
+</operation>
+<operation name="GetFreeBankDocList">
+<input message="tns:GetFreeBankDocListRequest"/>
+<output message="tns:GetFreeBankDocListResponse"/>
+</operation>
+</portType>
+<binding name="WSGetFreeBankDocsbinding" type="tns:WSGetFreeBankDocs">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+<operation name="GetFreeBankDoc">
+<soap:operation style="rpc" soapAction="urn:WSGetFreeBankDocsIntf-WSGetFreeBankDocs#GetFreeBankDoc"/>
+<input message="tns:GetFreeBankDocRequest">
+<soap:body namespace="urn:WSGetFreeBankDocsIntf-WSGetFreeBankDocs" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</input>
+<output message="tns:GetFreeBankDocResponse">
+<soap:body namespace="urn:WSGetFreeBankDocsIntf-WSGetFreeBankDocs" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</output>
+</operation>
+<operation name="GetFreeBankDocList">
+<soap:operation style="rpc" soapAction="urn:WSGetFreeBankDocsIntf-WSGetFreeBankDocs#GetFreeBankDocList"/>
+<input message="tns:GetFreeBankDocListRequest">
+<soap:body namespace="urn:WSGetFreeBankDocsIntf-WSGetFreeBankDocs" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</input>
+<output message="tns:GetFreeBankDocListResponse">
+<soap:body namespace="urn:WSGetFreeBankDocsIntf-WSGetFreeBankDocs" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</output>
+</operation>
+</binding>
+<service name="WSGetFreeBankDocsservice">
+<port name="WSGetFreeBankDocsPort" binding="tns:WSGetFreeBankDocsbinding">
+<soap:address location="http://localhost/soap/WSGetFreeBankDocs"/>
+</port>
+</service>
+</definitions>

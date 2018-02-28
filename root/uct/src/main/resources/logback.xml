@@ -1,0 +1,33 @@
+<!DOCTYPE configuration>
+<!-- non-official xsd: https://raw.github.com/enricopulatzo/logback-XSD/master/src/main/xsd/logback.xsd -->
+<configuration>
+    <property name="logFile" value="./logs/master-domino/@projectName@/@projectName@.log" />
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logFile}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logFile}.%d.zip</fileNamePattern>
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%date] [%level] %msg [%file:%line] [%logger{100}] [%thread] [UCT-@projectVersion@]%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[UCT-@projectVersion@] [%level] %msg [%file:%line] [%logger{100}] [%date]%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="liquibase" level="INFO" />
+    <logger name="ru.masterdm.uct.axis.filter" level="DEBUG" />
+    <logger name="ru.masterdm.uct.repository" level="DEBUG" />
+
+    <logger name="org.apache.axis" level="DEBUG" />
+    <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="DEBUG" />
+
+    <root level="INFO">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ru.masterdm.uct.repository.AccountDao">
+
+    <resultMap id="accountResultMap" type="ru.masterdm.uct.entity.Account" autoMapping="true">
+        <result property="rest" column="rest" javaType="BigDecimal" jdbcType="NUMERIC"/>
+    </resultMap>
+
+    <select id="selectAccounts" parameterType="map" resultMap="accountResultMap">
+        select acc.c_clnt as custid, acc.acc as account, acc.amount as rest
+        from n_accbal acc
+        where acc.dt_close is null
+        <if test="custId != null">
+            and acc.c_clnt = #{custId}
+        </if>
+        <if test="account != null and account != ''">
+            and acc.account = #{account}
+        </if>
+    </select>
+
+</mapper>

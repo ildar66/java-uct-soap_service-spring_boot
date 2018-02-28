@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WSGetFreeBankDocsGOZ" xmlns:ns1="urn:WSGetFreeBankDocsGOZIntf" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<message name="GetFreeBankDocGOZRequest">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="CustID" type="xs:int"/>
+<part name="Document" type="xs:string"/>
+<part name="RecordID" type="xs:string"/>
+<part name="RemoteUser" type="xs:string"/>
+<part name="SignData" type="xs:string"/>
+</message>
+<message name="GetFreeBankDocGOZResponse">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="Document" type="xs:string"/>
+<part name="SignData" type="xs:string"/>
+</message>
+<message name="GetFreeBankDocGOZListRequest">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="CustID" type="xs:int"/>
+<part name="DocList" type="xs:string"/>
+<part name="DocumentDate" type="xs:date"/>
+<part name="RemoteUser" type="xs:string"/>
+</message>
+<message name="GetFreeBankDocGOZListResponse">
+<part name="BSError" type="xs:string"/>
+<part name="BSErrorCode" type="xs:string"/>
+<part name="DocList" type="xs:string"/>
+</message>
+<portType name="WSGetFreeBankDocsGOZ">
+<operation name="GetFreeBankDocGOZ">
+<input message="tns:GetFreeBankDocGOZRequest"/>
+<output message="tns:GetFreeBankDocGOZResponse"/>
+</operation>
+<operation name="GetFreeBankDocGOZList">
+<input message="tns:GetFreeBankDocGOZListRequest"/>
+<output message="tns:GetFreeBankDocGOZListResponse"/>
+</operation>
+</portType>
+<binding name="WSGetFreeBankDocsGOZbinding" type="tns:WSGetFreeBankDocsGOZ">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+<operation name="GetFreeBankDocGOZ">
+<soap:operation style="rpc" soapAction="urn:WSGetFreeBankDocsGOZIntf-WSGetFreeBankDocsGOZ#GetFreeBankDocGOZ"/>
+<input message="tns:GetFreeBankDocGOZRequest">
+<soap:body namespace="urn:WSGetFreeBankDocsGOZIntf-WSGetFreeBankDocsGOZ" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</input>
+<output message="tns:GetFreeBankDocGOZResponse">
+<soap:body namespace="urn:WSGetFreeBankDocsGOZIntf-WSGetFreeBankDocsGOZ" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</output>
+</operation>
+<operation name="GetFreeBankDocGOZList">
+<soap:operation style="rpc" soapAction="urn:WSGetFreeBankDocsGOZIntf-WSGetFreeBankDocsGOZ#GetFreeBankDocGOZList"/>
+<input message="tns:GetFreeBankDocGOZListRequest">
+<soap:body namespace="urn:WSGetFreeBankDocsGOZIntf-WSGetFreeBankDocsGOZ" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</input>
+<output message="tns:GetFreeBankDocGOZListResponse">
+<soap:body namespace="urn:WSGetFreeBankDocsGOZIntf-WSGetFreeBankDocsGOZ" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+</output>
+</operation>
+</binding>
+<service name="WSGetFreeBankDocsGOZservice">
+<port name="WSGetFreeBankDocsGOZPort" binding="tns:WSGetFreeBankDocsGOZbinding">
+<soap:address location="http://localhost/soap/WSGetFreeBankDocsGOZ"/>
+</port>
+</service>
+</definitions>

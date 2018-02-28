@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+  <!-- global configuration -->
+    <globalConfiguration>
+        <parameter name="sendXsiTypes" value="false"/>
+        <parameter name="sendMultiRefs" value="true"/>
+        <parameter name="sendXMLDeclaration" value="true"/>
+    </globalConfiguration>
+    <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+
+  <!-- Services from WSGetCustomerservice WSDL service -->
+
+  <service name="WSGetCustomer" provider="java:SpringRPC" style="rpc" use="encoded">
+      <wsdlFile>/wsdl/WSGetCustomer.wsdl</wsdlFile>
+      <parameter name="bean" value="wsGetCustomer"/>
+      <parameter name="allowedMethods" value="*"/>
+  </service>
+
+  <service name="WSGetDocStatus" provider="java:SpringRPC" style="rpc" use="encoded">
+      <wsdlFile>/wsdl/WSGetDocStatus.wsdl</wsdlFile>
+      <parameter name="bean" value="wsGetDocStatus"/>
+      <parameter name="allowedMethods" value="*"/>
+  </service>
+
+  <service name="WSGetFreeBankDocs" provider="java:SpringRPC" style="rpc" use="encoded">
+      <wsdlFile>/wsdl/WSGetFreeBankDocs.wsdl</wsdlFile>
+      <parameter name="bean" value="wsGetFreeBankDocs"/>
+      <parameter name="allowedMethods" value="*"/>
+  </service>
+
+  <service name="WSGetFreeBankDocsGOZ" provider="java:SpringRPC" style="rpc" use="encoded">
+      <wsdlFile>/wsdl/WSGetFreeBankDocsGOZ.wsdl</wsdlFile>
+      <parameter name="bean" value="wsGetFreeBankDocsGOZ"/>
+      <parameter name="allowedMethods" value="*"/>
+  </service>
+
+  <service name="WSGetStatement" provider="java:SpringRPC" style="rpc" use="encoded">
+      <wsdlFile>/wsdl/WSGetStatement.wsdl</wsdlFile>
+      <parameter name="bean" value="wsGetStatement"/>
+      <parameter name="allowedMethods" value="*"/>
+  </service>
+
+  <service name="WSImportDocument" provider="java:SpringRPC" style="rpc" use="encoded">
+      <wsdlFile>/wsdl/WSImportDocument.wsdl</wsdlFile>
+      <parameter name="bean" value="wsImportDocument"/>
+      <parameter name="allowedMethods" value="*"/>
+  </service>
+
+  <service name="WSImportSignedDocument" provider="java:SpringRPC" style="rpc" use="encoded">
+      <wsdlFile>/wsdl/WSImportSignedDocument.wsdl</wsdlFile>
+      <parameter name="bean" value="wsImportSignedDocument"/>
+      <parameter name="allowedMethods" value="*"/>
+  </service>
+
+  <service name="WSPrepareDocForCancel" provider="java:SpringRPC" style="rpc" use="encoded">
+      <wsdlFile>/wsdl/WSPrepareDocForCancel.wsdl</wsdlFile>
+      <parameter name="bean" value="wsPrepareDocForCancel"/>
+      <parameter name="allowedMethods" value="*"/>
+  </service>
+
+ <!-- part of Axis configuration -->
+    <transport name="http">
+        <requestFlow>
+            <handler type="URLMapper"/>
+            <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+        </requestFlow>
+    </transport>
+
+</deployment>

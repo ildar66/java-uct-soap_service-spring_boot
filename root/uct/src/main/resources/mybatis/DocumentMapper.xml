@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ru.masterdm.uct.repository.DocumentDao">
+    <resultMap id="statementDocResultMap" type="ru.masterdm.uct.entity.StatementDoc" autoMapping="true">
+        <id property="custId" column="custid"/>
+        <id property="account" column="account"/>
+        <id property="statementDate" column="statementdate"/>
+        <id property="type" column="satetementtype"/>
+    </resultMap>
+
+    <resultMap id="documentResultMap" type="ru.masterdm.uct.entity.Document" autoMapping="true">
+        <id property="recordID" column="recordID"/>
+    </resultMap>
+
+    <resultMap id="freeBankDocResultMap" type="ru.masterdm.uct.entity.FreeBankDoc" autoMapping="true">
+        <id property="recordID" column="recordID"/>
+        <result property="docBody" column="document"/>
+        <result property="signData" column="signdata"/>
+    </resultMap>
+
+    <select id="selectDocScheme" resultType="_byte[]">
+        select es.xsd
+          from ekk_scheme es
+         where es.scheme = #{docScheme}
+           and es.version = #{docVersion}
+    </select>
+
+    <select id="selectDocument" resultMap="documentResultMap">
+        select docscheme, docversion, docdata, recordid, docStatus, docinfo, bsErrorCode, bsError
+          from ekk_doc
+         where recordid = #{recordID}
+           and docscheme = #{docScheme}
+    </select>
+
+    <insert id="insertDocument" statementType="CALLABLE">
+        begin
+            insert into ekk_doc (docscheme, docversion, docdata, recordid, signdata)
+            values (#{docScheme}, #{docVersion}, #{docData}, SYS_GUID(), #{signData})
+            returning recordid into #{recordID, javaType=String, jdbcType=VARCHAR, jdbcTypeName=VARCHAR2, mode=OUT};
+        end;
+    </insert>
+
+    <select id="selectFreeBankDoc" resultMap="freeBankDocResultMap">
+        select recordid, documentDate, docType, docName, document, signdata
+          from ekk_doc_bank
+         where recordid = #{recordID}
+    </select>
+
+    <select id="selectFreeBankDocList" resultType="ru.masterdm.uct.entity.FreeBankDoc">
+        select recordid, documentDate, docType, docName, document, signdata
+        from ekk_doc_bank
+        where custid = #{custID}
+        <if test="documentDate != null">
+            and to_date(documentDate) = #{documentDate}
+        </if>
+    </select>
+
+    <select id="selectStatementDoc" resultMap="statementDocResultMap">
+         select * from (
+                select custid, account, statementDate, satetementType, statementDoc, signData
+                  from ekk_statement
+                 where custid = #{custID}
+                   and account = #{account}
+                   and satetementType = #{type}
+                   and to_date(statementDate) = #{documentDate}
+                 order by statementDate desc)
+          where rownum = 1
+    </select>
+</mapper>

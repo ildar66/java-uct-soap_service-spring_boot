@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ru.masterdm.uct.repository.ClientDao">
+    <resultMap id="clientResultMap" type="ru.masterdm.uct.entity.Client" autoMapping="true">
+        <id property="custID" column="custID"/>
+    </resultMap>
+
+    <select id="selectClient" resultMap="clientResultMap">
+        select custID, ln, customertype, inn
+          from ekk_client
+         where custID = #{custID}
+    </select>
+</mapper>

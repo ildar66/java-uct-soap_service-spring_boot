@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="BSDocument">
+		<xs:annotation>
+			<xs:documentation>
+				Справка о валютных операциях (138-И) (ID 1010).
+				Версия 6.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DOCUMENTDATE" type="BS_Date">
+					<xs:annotation>
+						<xs:documentation>Дата документа</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DOCUMENTNUMBER">
+					<xs:annotation>
+						<xs:documentation>Номер документа</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_String">
+							<xs:maxLength value="15" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTID" type="BS_Integer">
+					<xs:annotation>
+						<xs:documentation>ID организации</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="SENDEROFFICIALS" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Ответственный исполнитель</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="40" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERNAME">
+					<xs:annotation>
+						<xs:documentation>Название организации</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_String">
+							<xs:maxLength value="255" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERPROPERTYTYPE" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Форма собственности организации
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="10" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERINN" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Нас. пункт организации</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="35" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERTYPE" minOccurs="0" type="BSInteger">
+					<xs:annotation>
+						<xs:documentation>Тип организации</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PHONEOFFICIAL" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Тел. Ответственного лица</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="20" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="FAXOFFICIAL" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Факс ответственного лица</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="20" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERBANKBIC" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>БИК банка Клиента</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERBANKNAME">
+					<xs:annotation>
+						<xs:documentation>Наименование банка Клиента</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_String">
+							<xs:maxLength value="255" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERBANKPLACETYPE" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Тип нас. пункта банка Клиента</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="5" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERBANKPLACE" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Нас. пункт банка Клиента</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="25" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CUSTOMERBANKCORRACCOUNT" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Кор. счет банка Клиента</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="25" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DEALINFOBLOB" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+							BLOB таблица записей о вал. операциях
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Record" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ADDINFO">
+											<xs:annotation>
+												<xs:documentation>Резервное поле</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="BSString">
+													<xs:maxLength value="255" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AMOUNTPSCURRENCY" type="BSMoney">
+											<xs:annotation>
+												<xs:documentation>
+													Сумма в валюте контракта
+												</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="CURRCODEPS">
+											<xs:annotation>
+												<xs:documentation>Код валюты контракта</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="BSString">
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DOCUMENTNUMBER">
+											<xs:annotation>
+												<xs:documentation>Номер уведомления о
+													зачислении/распоряжения
+													на списание
+												</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="BSString">
+													<xs:maxLength value="50" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="OPERCODE">
+											<xs:annotation>
+												<xs:documentation>Код вида валютной операции
+												</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="BSString">
+													<xs:maxLength value="6" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PSNUMBER">
+											<xs:annotation>
+												<xs:documentation>Номер ПС
+												</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="BSString">
+													<xs:maxLength value="50" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PAYMENTAMOUNT" type="BSMoney">
+											<xs:annotation>
+												<xs:documentation>
+													Сумма платежа (в валюте платежа)
+												</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="PAYMENTCURRCODE">
+											<xs:annotation>
+												<xs:documentation>Код валюты платежа (цифровой)
+												</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="BSString">
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TRANSFERDATE" type="BSDate">
+											<xs:annotation>
+												<xs:documentation>Дата зачисления/расч. документа
+												</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="NUM" type="BSInteger">
+											<xs:annotation>
+												<xs:documentation>№ п/п (при корректировке - номер
+													корректируемой строки)
+												</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="OPERDATE" type="BSDate">
+											<xs:annotation>
+												<xs:documentation>Дата операции</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="EXPECTDATE" type="BSDate">
+											<xs:annotation>
+												<xs:documentation>Ожидаемый срок</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="REMARK">
+											<xs:annotation>
+												<xs:documentation>Примечание</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="BSString">
+													<xs:maxLength value="255" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="FOPERNUMMODE">
+											<xs:annotation>
+												<xs:documentation>Признак: 0 - Номер ПС, 1 - Номер-дата
+													контракта
+												</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="BSInteger">
+													<xs:pattern value="" />
+													<xs:pattern value="0" />
+													<xs:pattern value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CONTRACTNUMBER">
+											<xs:annotation>
+												<xs:documentation>Номер контракта</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="BSString">
+													<xs:maxLength value="50" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CONTRACTDATE" type="BSDate">
+											<xs:annotation>
+												<xs:documentation>Дата контракта</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="PAYMENTDIRECTION">
+											<xs:annotation>
+												<xs:documentation>
+													1-зачисление денежных средств на счет
+													резидента
+													2-списание денежных средств со счета резидента
+													7-зачисление денежных средств на счет финансового
+													агента(фактора) - резидента - при заполнении СВО
+													резидентом, оформившим ПС
+													8-зачисление денежных средств на
+													счет другого лица - резидента или резидента,
+													который не
+													оформляет ПС,
+													- при заполнении СВО резидентом, оформившим ПС
+													9-списание
+													денежных средств со
+													счета третьего лица -
+													резидента, другого
+													лица - резидента или резидента, который
+													не оформляет ПС, -
+													при заполнении СВО
+													резидентом, оформившим
+													ПС
+													0-перевод
+													денежных средств при
+													исполнении аккредитива в
+													пользу
+													получателя - нерезидента
+												</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="BSInteger">
+													<xs:pattern value="" />
+													<xs:pattern value="0" />
+													<xs:pattern value="1" />
+													<xs:pattern value="2" />
+													<xs:pattern value="7" />
+													<xs:pattern value="8" />
+													<xs:pattern value="9" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DOCUMENTTYPEID" type="BSInteger">
+											<xs:annotation>
+												<xs:documentation>Вид документа, для которого
+													оформляется
+													справка
+												</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="PREPAYRETURN" type="BSDate">
+											<xs:annotation>
+												<xs:documentation>Срок возврата аванса</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ADDINFO" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Дополнительная информация</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="255" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="RESERV1" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Резервное поле</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="255" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="KBOPID">
+					<xs:annotation>
+						<xs:documentation>
+							Идентификатор принадлежности к подразделению
+							банка
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BS_Integer" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="BANKVKFULLNAME" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Наименование уполномоченного банка
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="255" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ACCOUNT" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Номер счета резидента</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="32" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="BANKCOUNTRYCODE" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Код страны банка- нерезидента
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="3" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="FCORRECTION">
+					<xs:annotation>
+						<xs:documentation> Признак корректировки </xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSInteger" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ATTACHMENT" type="BSString" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Вложения файлов.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="CODEMESSAGE" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Код сообщения</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="50" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="MESSAGEFORBANK" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Сообщение для банка</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="BSString">
+							<xs:maxLength value="255" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BS_Date">
+		<xs:annotation>
+			<xs:documentation>Дата. DD.MM.YYYY</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+			<xs:pattern
+				value="(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.((19)|(20)\d{2})" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BS_Integer">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="0" />
+			<xs:minInclusive value="0" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BS_String">
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+			<xs:minLength value="1" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BSString">
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BS_STRING">
+		<xs:annotation>
+			<xs:documentation>Пустая строка</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="0" />
+			<xs:whiteSpace value="collapse" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BSInteger">
+		<xs:annotation>
+			<xs:documentation>INTEGER | ""</xs:documentation>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:list itemType="BS_Integer" />
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:list itemType="BS_STRING" />
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<xs:simpleType name="BS_Money">
+		<xs:restriction base="xs:double">
+			<xs:minInclusive value="0" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BSMoney">
+		<xs:annotation>
+			<xs:documentation>MONEY | ""</xs:documentation>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:list itemType="BS_Money" />
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:list itemType="BS_STRING" />
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<xs:simpleType name="BSDate">
+		<xs:annotation>
+			<xs:documentation>DD.MM.YYYY | ""</xs:documentation>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:list itemType="BS_Date" />
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:list itemType="BS_STRING" />
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+</xs:schema>

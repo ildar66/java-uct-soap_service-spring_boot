@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="uct-ekk-scheme-CancellationRequest_ID13_V3" author="svaliev" logicalFilePath="uct-ekk-scheme-CancellationRequest_ID13_V3">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="CancellationRequest" />
+            <column name="version" value="3" />
+            <column name="xsd" valueBlobFile="xsd/CancellationRequest_ID13_V3.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-CancellationRequest_ID13_V615" author="svaliev" logicalFilePath="uct-ekk-scheme-CancellationRequest_ID13_V615">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="CancellationRequest" />
+            <column name="version" value="615" />
+            <column name="xsd" valueBlobFile="xsd/CancellationRequest_ID13_V615.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-ChangeConRequest_IDX_V1" author="svaliev" logicalFilePath="uct-ekk-scheme-ChangeConRequest_IDX_V1">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="ChangeConRequest" />
+            <column name="version" value="1" />
+            <column name="xsd" valueBlobFile="xsd/ChangeConRequest_IDX_V1.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-ChangeCredRequest_IDX_V1" author="svaliev" logicalFilePath="uct-ekk-scheme-ChangeCredRequest_IDX_V1">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="ChangeCredRequest" />
+            <column name="version" value="1" />
+            <column name="xsd" valueBlobFile="xsd/ChangeCredRequest_IDX_V1.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-ConfDocInquiry138I_ID1012_V6" author="svaliev" logicalFilePath="uct-ekk-scheme-ConfDocInquiry138I_ID1012_V6">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="ConfDocInquiry138I" />
+            <column name="version" value="6" />
+            <column name="xsd" valueBlobFile="xsd/ConfDocInquiry138I_ID1012_V6.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-ConfDocInquiry138I_ID1012_V7" author="svaliev" logicalFilePath="uct-ekk-scheme-ConfDocInquiry138I_ID1012_V7">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="ConfDocInquiry138I" />
+            <column name="version" value="7" />
+            <column name="xsd" valueBlobFile="xsd/ConfDocInquiry138I_ID1012_V7.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-CurrBuy_ID8_V5" author="svaliev" logicalFilePath="uct-ekk-scheme-CurrBuy_ID8_V5">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="CurrBuy" />
+            <column name="version" value="5" />
+            <column name="xsd" valueBlobFile="xsd/CurrBuy_ID8_V5.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-CurrConversion_ID14_V5" author="svaliev" logicalFilePath="uct-ekk-scheme-CurrConversion_ID14_V5">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="CurrConversion" />
+            <column name="version" value="5" />
+            <column name="xsd" valueBlobFile="xsd/CurrConversion_ID14_V5.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-CurrDealInquiry138I_ID1010_V6" author="svaliev" logicalFilePath="uct-ekk-scheme-CurrDealInquiry138I_ID1010_V6">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="CurrDealInquiry138I" />
+            <column name="version" value="6" />
+            <column name="xsd" valueBlobFile="xsd/CurrDealInquiry138I_ID1010_V6.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-CurrDealInquiry138I_ID1010_V7" author="svaliev" logicalFilePath="uct-ekk-scheme-CurrDealInquiry138I_ID1010_V7">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="CurrDealInquiry138I" />
+            <column name="version" value="7" />
+            <column name="xsd" valueBlobFile="xsd/CurrDealInquiry138I_ID1010_V7.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-CurrSell_ID7_V5" author="svaliev" logicalFilePath="uct-ekk-scheme-CurrSell_ID7_V5">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="CurrSell" />
+            <column name="version" value="5" />
+            <column name="xsd" valueBlobFile="xsd/CurrSell_ID7_V5.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-DealPassCon138i_ID60_V3" author="svaliev" logicalFilePath="uct-ekk-scheme-DealPassCon138i_ID60_V3">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="DealPassCon138i" />
+            <column name="version" value="3" />
+            <column name="xsd" valueBlobFile="xsd/DealPassCon138i_ID60_V3.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-DealPassCon138i_ID60_V5" author="svaliev" logicalFilePath="uct-ekk-scheme-DealPassCon138i_ID60_V5">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="DealPassCon138i" />
+            <column name="version" value="5" />
+            <column name="xsd" valueBlobFile="xsd/DealPassCon138i_ID60_V5.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-DealPassCred138i_ID62_V3" author="svaliev" logicalFilePath="uct-ekk-scheme-DealPassCred138i_ID62_V3">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="DealPassCred138i" />
+            <column name="version" value="3" />
+            <column name="xsd" valueBlobFile="xsd/DealPassCred138i_ID62_V3.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-DealPassCred138i_ID62_V5" author="svaliev" logicalFilePath="uct-ekk-scheme-DealPassCred138i_ID62_V5">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="DealPassCred138i" />
+            <column name="version" value="5" />
+            <column name="xsd" valueBlobFile="xsd/DealPassCred138i_ID62_V5.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-FreeClientDoc_ID4_V3" author="svaliev" logicalFilePath="uct-ekk-scheme-FreeClientDoc_ID4_V3">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="FreeClientDoc" />
+            <column name="version" value="3" />
+            <column name="xsd" valueBlobFile="xsd/FreeClientDoc_ID4_V3.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-FreeClientDocGOZ_ID3304_V1" author="svaliev" logicalFilePath="uct-ekk-scheme-FreeClientDocGOZ_ID3304_V1">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="FreeClientDocGOZ" />
+            <column name="version" value="1" />
+            <column name="xsd" valueBlobFile="xsd/FreeClientDocGOZ_ID3304_V1.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-PayDocCur_ID9_V5" author="svaliev" logicalFilePath="uct-ekk-scheme-PayDocCur_ID9_V5">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="PayDocCur" />
+            <column name="version" value="5" />
+            <column name="xsd" valueBlobFile="xsd/PayDocCur_ID9_V5.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-PayDocCur_ID9_V632" author="svaliev" logicalFilePath="uct-ekk-scheme-PayDocCur_ID9_V632">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="PayDocCur" />
+            <column name="version" value="632" />
+            <column name="xsd" valueBlobFile="xsd/PayDocCur_ID9_V632.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-PayDocRu_ID1_V5" author="svaliev" logicalFilePath="uct-ekk-scheme-PayDocRu_ID1_V5">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="PayDocRu" />
+            <column name="version" value="5" />
+            <column name="xsd" valueBlobFile="xsd/PayDocRu_ID1_V5.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-PayDocRu_ID1_V7" author="svaliev" logicalFilePath="uct-ekk-scheme-PayDocRu_ID1_V7">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="PayDocRu" />
+            <column name="version" value="7" />
+            <column name="xsd" valueBlobFile="xsd/PayDocRu_ID1_V7.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-PayDocRu_ID1_V632" author="svaliev" logicalFilePath="uct-ekk-scheme-PayDocRu_ID1_V632">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="PayDocRu" />
+            <column name="version" value="632" />
+            <column name="xsd" valueBlobFile="xsd/PayDocRu_ID1_V632.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-StatementQuery_ID11_V3" author="svaliev" logicalFilePath="uct-ekk-scheme-StatementQuery_ID11_V3">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="StatementQuery" />
+            <column name="version" value="3" />
+            <column name="xsd" valueBlobFile="xsd/StatementQuery_ID11_V3.xsd" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="uct-ekk-scheme-TransitAccPayDoc_ID49_V3" author="svaliev" logicalFilePath="uct-ekk-scheme-TransitAccPayDoc_ID49_V3">
+        <insert tableName="ekk_scheme">
+            <column name="scheme" value="TransitAccPayDoc" />
+            <column name="version" value="3" />
+            <column name="xsd" valueBlobFile="xsd/TransitAccPayDoc_ID49_V3.xsd" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>
